@@ -1,5 +1,4 @@
 import axios from 'axios';
-import express from 'express';
 
 const BUDA_API_BASE_URL = 'http://api.buda.com';
 

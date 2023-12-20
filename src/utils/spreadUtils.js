@@ -4,4 +4,4 @@ const calculateSpread = (buyOrders, sellOrders) => {
     return lowestAsk - highestBid;
   };
   
-  export default calculateSpread;
+  export { calculateSpread };

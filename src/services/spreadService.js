@@ -1,12 +1,40 @@
 import budaApiService from "./budaApiService";
 import calculateSpread from "../utils/spreadUtils";
-import isSpreadGreaterThanAlert from "../utils/pollingUtils";
+import isSpreadGreaterThanAlert from "../utils/isSpreadCrossedAlertThreshold";
 
 
 import alertModel from "../models/alertModel";
 
 
+const analyzeSpread = (orderBook) => {
+    const buyOrders = orderBook.buy;
+    const sellOrders = orderBook.sell;
+
+    const calculatedSpread = calculateSpread(buyOrders, sellOrders);
+  
+    const buyOrdersSummary = buyOrders.map((order) => ({
+      price: order.price,
+      quantity: order.amount,
+      type: 'buy',
+    }));
+  
+    const sellOrdersSummary = sellOrders.map((order) => ({
+      price: order.price,
+      quantity: order.amount,
+      type: 'sell',
+    }));
+  
+    const orderBookSummary = [...buyOrdersSummary, ...sellOrdersSummary];
+  
+    return {
+      spread: calculatedSpread,
+      orderBookSummary: orderBookSummary,
+    };
+  };
+
+
 const spreadService = {
+
     getAllSpreads: async () => {
       try {
         const marketData = await budaApiService.getMarketData();
@@ -39,32 +67,6 @@ const spreadService = {
       }
     },
   };  
-
-const analyzeSpread = (orderBook) => {
-    const buyOrders = orderBook.buy;
-    const sellOrders = orderBook.sell;
-
-    const calculatedSpread = calculateSpread(buyOrders, sellOrders);
-  
-    const buyOrdersSummary = buyOrders.map((order) => ({
-      price: order.price,
-      quantity: order.amount,
-      type: 'buy',
-    }));
-  
-    const sellOrdersSummary = sellOrders.map((order) => ({
-      price: order.price,
-      quantity: order.amount,
-      type: 'sell',
-    }));
-  
-    const orderBookSummary = [...buyOrdersSummary, ...sellOrdersSummary];
-  
-    return {
-      spread: calculatedSpread,
-      orderBookSummary: orderBookSummary,
-    };
-  };
 
 export default spreadService;
 
