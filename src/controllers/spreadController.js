@@ -1,5 +1,6 @@
 import spreadService from '../services/spreadService';
 
+
 const spreadController = {
     getAllSpreads: async (req, res) => {
       try {

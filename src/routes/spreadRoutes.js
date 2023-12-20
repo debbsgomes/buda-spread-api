@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import spreadController from '../controllers/spreadController';
 
+
 const router = Router();
 
 router.get('/spreads', spreadController.getAllSpreads);
