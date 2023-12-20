@@ -1,15 +1,12 @@
 import { Router } from 'express';
 import spreadController from '../controllers/spreadController';
 
-
 const router = Router();
 
+router.get('/spreads', spreadController.getAllSpreads);
 
-router.get('/spreads', spreadController);
+router.get('/spreads/:market', spreadController.getSpreadByMarket);
 
-router.get('/spreads/:market', spreadController);
-
-router.post('/spreads/alert', spreadController);
-
+router.post('/spreads/alert', spreadController.setAlertSpread);
 
 export default router;
