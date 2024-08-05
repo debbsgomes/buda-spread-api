@@ -200,5 +200,5 @@ This project is licensed under the MIT License. See the LICENSE file for details
 If you have any questions or need further assistance, please contact:
 
 -   **Name**: Deborah Gomes
--   **Email**: deborah@example.com
+-   **Email**: debbsgomes@gmail.com
 -   **GitHub**: [debbsgomes](https://github.com/debbsgomes)
