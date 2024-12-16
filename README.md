@@ -1,6 +1,6 @@
 # Buda Spread API
 
-This project is a REST API designed to communicate with the Buda.com API, providing functionalities to retrieve cryptocurrency data and spreads..
+This project is a REST API designed to communicate with the Buda.com API, providing functionalities to retrieve cryptocurrency data and spreads...
 
 ## Table of Contents
 
